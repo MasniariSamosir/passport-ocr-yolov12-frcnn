@@ -8,13 +8,28 @@ The system implements and compares two state-of-the-art object detection models,
 
 ---
 
-## 🔬 Research Publication
+### 🔬 Research Publication
 
 **Comparison of Faster R-CNN and YOLO v12 on Passport Text Extraction Based on Optical Character Recognition**
-
 Published in a **SINTA 4 Accredited Journal**.
 
-📄 The full research paper is available in the **publication/** folder.
+### Publication Resources
+
+📄 Full Paper (PDF)
+https://journal.thamrin.ac.id/index.php/jtik/article/view/3307/2766
+
+📚 Journal Issue
+https://journal.thamrin.ac.id/index.php/jtik/issue/view/161
+
+📁 Repository Copy
+The publication is also available in the `publication/` folder of this repository.
+
+---
+
+### Citation
+Masniari Samosir, et al. (2026).
+*Comparison of Faster R-CNN and YOLO v12 on Passport Text Extraction Based on Optical Character Recognition.*
+Jurnal Teknologi Informatika dan Komputer MH. Thamrin.
 
 ---
 
