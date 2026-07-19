@@ -35,13 +35,13 @@ Jurnal Teknologi Informatika dan Komputer MH. Thamrin.
 
 ## 📂 Repository Contents
 
-* 📄 Research Publication (SINTA 4)
-* 📚 PAS-OCR DL User Guide
-* 🏗 Research Workflow and Architecture
-* 🗂 Dataset Information
-* 📊 OCR Evaluation Results
-* ✅ Ground Truth vs Prediction Analysis
-* 🖥 System Implementation Screenshots
+* Research Publication (SINTA 4)
+* PAS-OCR DL User Guide
+* Research Workflow and Architecture
+* Dataset Information
+* OCR Evaluation Results
+* Ground Truth vs Prediction Analysis
+* System Implementation Screenshots
 
 ---
 
