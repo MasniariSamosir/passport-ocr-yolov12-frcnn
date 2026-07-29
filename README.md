@@ -57,28 +57,17 @@ Jurnal Teknologi Informatika dan Komputer MH. Thamrin.
 * Evaluation Metrics Visualization
 
 ---
+
 ## 📂 Repository Structure
 
-The repository is systematically organized to support the entire research workflow, from dataset preparation and image preprocessing to object detection, OCR processing, web application development, performance evaluation, and research dissemination. Each module is designed to improve maintainability, reproducibility, and ease of understanding for researchers, developers, and practitioners.
+The repository is systematically organized to support the complete research workflow, including dataset preparation, image preprocessing, object detection, OCR processing, web application development, performance evaluation, and research dissemination. The modular structure improves code maintainability, reproducibility, and ease of understanding for researchers, developers, and practitioners.
 
-passport-ocr-yolov12-frcnn/
-│
-├── app.py                  # Main Flask application
-├── requirements.txt        # Python project dependencies
-│
-├── architecture/           # Research workflow and system architecture
-├── dataset/                # Sample dataset and configuration files
-├── detection/              # YOLOv12 and Faster R-CNN implementation
-├── docs/                   # User guide and project documentation
-├── ground_truth/           # Ground truth annotations for evaluation
-├── preprocessing/          # Image preprocessing modules
-├── publication/            # Published research paper (SINTA 4)
-├── screenshots/            # Application and evaluation screenshots
-├── static/                 # Static assets (CSS, JavaScript, and images)
-├── templates/              # HTML templates for the Flask web application
-└── test/                   # Testing and utility scripts
 
-```
+
+
+
+---
+
 ## 🔄 Research Workflow
 
 The following workflow illustrates the research methodology used in developing the PAS-OCR DL system.
