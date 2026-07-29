@@ -135,10 +135,7 @@ Research Interests:
 ---
 ## 📜 License
 
-This project is protected under an **All Rights Reserved** license.
-The repository is made publicly available for academic review, portfolio evaluation, and research reference only.
-No permission is granted to copy, modify, redistribute, reproduce, or use any part of this repository without prior written permission from the copyright holder.
-For licensing or research collaboration, please contact:
+This project is protected under an **All Rights Reserved** license. The repository is made publicly available for academic review, portfolio evaluation, and research reference only. No permission is granted to copy, modify, redistribute, reproduce, or use any part of this repository without prior written permission from the copyright holder. For licensing or research collaboration, please contact:
 
 **Masniari Samosir**
 Email: samosirmasniari@gmail.com
