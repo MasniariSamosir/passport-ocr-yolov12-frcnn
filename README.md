@@ -62,9 +62,7 @@ Jurnal Teknologi Informatika dan Komputer MH. Thamrin.
 
 The repository is systematically organized to support the complete research workflow, including dataset preparation, image preprocessing, object detection, OCR processing, web application development, performance evaluation, and research dissemination. The modular structure improves code maintainability, reproducibility, and ease of understanding for researchers, developers, and practitioners.
 
-
-
-
+![Research Workflow](architecture/Repositorystructure.png)
 
 ---
 
