@@ -118,19 +118,32 @@ Performance evaluation results of the proposed system.
 
 ---
 
-## 👩‍🎓 Author
+## 👨‍💻 Author
 
 **Masniari Samosir**
 
 Master of Informatics Engineering
 
-Research Interests:
+**Research Interests**
 
-* Artificial Intelligence
-* Deep Learning
-* Computer Vision
-* OCR
-* Intelligent Document Processing
+- Artificial Intelligence (AI)
+- Machine Learning
+- Deep Learning
+- Computer Vision
+- Optical Character Recognition (OCR)
+- Intelligent Document Processing
+- Document AI
+
+**Technical Skills**
+
+- Python
+- Flask
+- OpenCV
+- PyTorch
+- YOLOv12
+- Faster R-CNN
+- EasyOCR
+- MySQL
 
 ---
 ## 📜 License
