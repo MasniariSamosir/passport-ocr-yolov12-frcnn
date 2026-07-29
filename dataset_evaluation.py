@@ -179,4 +179,20 @@ def conclude_best_model(yolo, frcnn):
 
     return "YOLOv12" if score_yolo > score_frcnn else "Faster R-CNN"
 
+
+"""
+Passport OCR using YOLOv12 and Faster R-CNN
+
+Copyright (c) 2026 Masniari Samosir
+
+All Rights Reserved.
+
+This source code is made publicly available only for
+academic review, research reference, and portfolio evaluation.
+
+Any reproduction, modification, redistribution,
+or commercial use without written permission
+from the copyright holder is prohibited.
+"""
+
     
