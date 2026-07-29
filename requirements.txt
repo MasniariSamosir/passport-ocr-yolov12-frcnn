@@ -1,0 +1,46 @@
+# ============================
+# OCR PASSPORT SYSTEM
+# YOLOv12 + Faster R-CNN + OCR
+# ============================
+
+# === PyTorch (CUDA 12.1) ===
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+torchaudio==2.5.1+cu121
+
+# === Object Detection ===
+ultralytics==8.3.202
+
+# === OCR Frameworks ===
+easyocr==1.7.2              # untuk pipeline YOLO v12
+transformers==4.47.1        # TrOCR (Faster R-CNN OCR)
+pytesseract==0.3.13         # MRZ OCR (ICAO 9303)
+
+# === Image Processing ===
+opencv-python==4.8.1.78
+Pillow==11.3.0
+imutils==0.5.4
+numpy==2.2.6
+
+# === COCO Evaluation ===
+pycocotools-windows==2.0.7
+tqdm==4.66.3
+
+# === Web Application (Flask) ===
+Flask==3.0.3
+Werkzeug==3.0.4
+Jinja2==3.1.6
+itsdangerous==2.2.0
+
+# === Database ===
+mysql-connector-python==9.2.0
+
+# === File & Report ===
+fpdf==1.7.2
+
+# === Utilities ===
+requests==2.32.3
+PyYAML==6.0.2
+typing-extensions==4.15.0
+packaging==25.0
