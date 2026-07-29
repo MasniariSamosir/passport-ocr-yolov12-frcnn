@@ -1261,3 +1261,21 @@ def dataset_evaluation_page():
 if __name__ == "__main__":
     init_models()
     app.run(host="0.0.0.0", port=5000, debug=True)
+
+
+
+
+"""
+Passport OCR using YOLOv12 and Faster R-CNN
+
+Copyright (c) 2026 Masniari Samosir
+
+All Rights Reserved.
+
+This source code is made publicly available only for
+academic review, research reference, and portfolio evaluation.
+
+Any reproduction, modification, redistribution,
+or commercial use without written permission
+from the copyright holder is prohibited.
+"""
