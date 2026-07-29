@@ -28,6 +28,7 @@ The annotated dataset was used for automatic passport information extraction bas
 
 The following passport information fields were annotated:
 
+- Photo
 - Passport Number
 - Surname
 - Given Names
