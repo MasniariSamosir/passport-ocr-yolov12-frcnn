@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-7xl mx-auto px-6">
+
+    <!-- ===============================
+                PAGE TITLE
+    =============================== -->
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 tracking-wide">
+        Dashboard <span class="text-blue-600">PRO</span>
+    </h1>
+
+    <!-- ===============================
+               STAT CARDS
+    =============================== -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+        <div class="p-6 rounded-2xl shadow border bg-white
+                    transform transition hover:scale-[1.03]">
+            <p class="text-gray-500 text-sm">Total Records</p>
+            <p id="statTotal" class="text-5xl font-extrabold text-gray-900 mt-2">0</p>
+        </div>
+
+        <div class="p-6 rounded-2xl shadow border bg-white
+                    transform transition hover:scale-[1.03]">
+            <p class="text-gray-500 text-sm">YOLOv12</p>
+            <p id="statYolo" class="text-5xl font-extrabold text-blue-600 mt-2">0</p>
+        </div>
+
+        <div class="p-6 rounded-2xl shadow border bg-white
+                    transform transition hover:scale-[1.03]">
+            <p class="text-gray-500 text-sm">Faster R-CNN</p>
+            <p id="statFrcnn" class="text-5xl font-extrabold text-green-600 mt-2">0</p>
+        </div>
+
+    </div>
+
+    <!-- ===============================
+                CHART SECTION
+    =============================== -->
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-12">
+
+        <div class="bg-white border shadow rounded-2xl p-6">
+            <h2 class="text-gray-800 font-semibold mb-4">Model Usage</h2>
+            <canvas id="chartDoughnut" height="170"></canvas>
+        </div>
+
+        <div class="bg-white border shadow rounded-2xl p-6 xl:col-span-2">
+            <h2 class="text-gray-800 font-semibold mb-4">Records Over Time</h2>
+            <canvas id="chartLine" height="170"></canvas>
+        </div>
+
+    </div>
+
+    <!-- ===============================
+               LATEST RECORDS
+    =============================== -->
+    <div class="bg-white border shadow rounded-2xl p-6">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">Latest Records</h2>
+
+        <table class="w-full text-gray-700 text-sm">
+            <thead>
+                <tr class="border-b">
+                    <th class="py-2 text-left">Name</th>
+                    <th class="py-2 text-left">Model</th>
+                    <th class="py-2 text-left">Passport</th>
+                    <th class="py-2 text-left">Time</th>
+                    <th class="py-2 text-left">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in latest %}
+                <tr class="border-b hover:bg-blue-50 transition">
+                    <td class="py-2">{{ r.surname }} {{ r.given_names }}</td>
+                    <td class="py-2 font-medium">{{ r.model }}</td>
+                    <td class="py-2">{{ r.passport_number }}</td>
+                    <td class="py-2">{{ r.timestamp }}</td>
+                    <td class="py-2">
+                        <a href="/record/{{ r.id }}" class="text-blue-600 hover:underline">
+                            View
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- ==========================
+      SAFEST JSON EXPORT
+=========================== -->
+<script id="stats-json" type="application/json">
+{{ stats | tojson }}
+</script>
+
+<script id="latest-json" type="application/json">
+{{ latest | tojson }}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const stats = JSON.parse(document.getElementById("stats-json").textContent);
+    const latestData = JSON.parse(document.getElementById("latest-json").textContent);
+
+    function countUp(id, endValue) {
+        let obj = document.getElementById(id);
+        let start = 0;
+        let duration = 900;
+        let step = endValue / (duration / 16);
+
+        let timer = setInterval(() => {
+            start += step;
+            if (start >= endValue) {
+                obj.textContent = endValue;
+                clearInterval(timer);
+            } else {
+                obj.textContent = Math.floor(start);
+            }
+        }, 16);
+    }
+
+    countUp("statTotal", stats.total);
+    countUp("statYolo",  stats.yolo);
+    countUp("statFrcnn", stats.frcnn);
+
+    new Chart(document.getElementById("chartDoughnut"), {
+        type: "doughnut",
+        data: {
+            labels: ["YOLOv12", "FRCNN", "COMPARE"],
+            datasets: [{
+                data: [stats.yolo, stats.frcnn, stats.compare],
+                backgroundColor: ["#2563eb", "#16a34a", "#f59e0b"]
+            }]
+        }
+    });
+
+    new Chart(document.getElementById("chartLine"), {
+        type: "line",
+        data: {
+            labels: latestData.map(r => r.timestamp),
+            datasets: [{
+                label: "Records",
+                data: latestData.map((_, i) => i + 1),
+                borderColor: "#2563eb",
+                backgroundColor: "rgba(37,99,235,0.2)",
+                fill: true,
+                tension: 0.4,
+                borderWidth: 3
+            }]
+        }
+    });
+
+});
+</script>
+
+{% endblock %}

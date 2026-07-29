@@ -1,0 +1,95 @@
+{% extends "base_auth.html" %}
+{% block content %}
+
+<div class="flex justify-center items-center min-h-[80vh] px-4">
+
+    <div class="w-full max-w-md bg-gray-800/40 backdrop-blur-xl border border-gray-700/50
+                shadow-2xl rounded-2xl p-10 
+                transform transition-all hover:scale-[1.01]">
+
+        <!-- Title -->
+        <h2 class="text-center text-3xl font-extrabold text-white mb-8 tracking-wide">
+            Login <span class="text-blue-400">Admin</span>
+        </h2>
+
+        <!-- FORM -->
+        <form method="POST" action="/login" class="space-y-6">
+
+            <!-- Username -->
+            <div>
+                <label class="block text-gray-300 text-sm mb-1">Username</label>
+                <input type="text" name="username" required
+                    class="w-full px-4 py-3 rounded-xl bg-gray-900/60 border border-gray-700
+                           text-gray-200 focus:ring-2 focus:ring-blue-400 focus:border-blue-400
+                           outline-none transition">
+            </div>
+
+                <!-- Password -->
+            <div>
+                <label class="block text-gray-300 text-sm mb-1">Password</label>
+
+                <div class="relative">
+                    <input id="passwordInput" 
+                        type="password" 
+                        name="password" 
+                        required
+                        class="w-full px-4 py-3 rounded-xl bg-gray-900/60 border border-gray-700
+                                text-gray-200 focus:ring-2 focus:ring-blue-400 focus:border-blue-400
+                                outline-none transition">
+
+                    <!-- Toggle Button -->
+                    <button type="button" 
+                            id="togglePassword"
+                            class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-200">
+                        👁️
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Button -->
+            <button type="submit"
+                class="w-full py-3 rounded-xl text-white font-semibold text-lg
+                       bg-gradient-to-r from-blue-500 to-blue-600
+                       hover:from-blue-600 hover:to-blue-700
+                       shadow-lg shadow-blue-500/40
+                       transition-all">
+                Login
+            </button>
+        </form>
+
+        <div class="text-right mt-4">
+                <a href="{{ url_for('forgot_password') }}"
+        class="text-sm text-blue-400 hover:underline">
+        Lupa password?
+        </a>
+        </div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const togglePassword = document.getElementById("togglePassword");
+            const passwordInput = document.getElementById("passwordInput");
+
+            togglePassword.addEventListener("click", () => {
+                const type = passwordInput.getAttribute("type") === "password" 
+                            ? "text" 
+                            : "password";
+                passwordInput.setAttribute("type", type);
+
+                // Change icon
+                togglePassword.textContent = 
+                    type === "password" ? "👁️" : "🙈";
+            });
+        });
+        </script>
+
+
+        <!-- Footer -->
+        <p class="text-center text-gray-400 text-sm mt-6">
+            © 2025 Paspor OCR AI – Secure Admin Login
+        </p>
+    </div>
+
+</div>
+
+{% endblock %}

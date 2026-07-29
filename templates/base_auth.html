@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login – Paspor OCR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex flex-col relative
+             bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/static/images/bgpasporocrai.png');">
+
+<!-- Overlay gelap + blur -->
+<div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+<main class="flex-grow py-10 relative z-10">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="w-full bg-blue-900/80 backdrop-blur
+               text-center text-sm text-white py-4 relative z-10">
+  © 2025 Paspor OCR AI – Secure Admin Login
+</footer>
+
+</body>
+</html>

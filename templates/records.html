@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="w-full max-w-7xl mx-auto py-10 px-6">
+
+  <!-- ===============================
+              PAGE TITLE
+  =============================== -->
+  <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">
+    Daftar Hasil OCR Paspor
+  </h2>
+
+  <!-- ===============================
+              SEARCH BOX
+  =============================== -->
+  <form method="GET" action="/records" class="mb-6 flex justify-end">
+    <input 
+        type="text" 
+        name="q" 
+        value="{{ request.args.get('q','') }}" 
+        placeholder="Cari passport number, nama, model…"
+        class="px-4 py-2 border border-gray-300 rounded-l-md w-72
+               text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    
+    <button 
+        type="submit" 
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-r-md">
+        Cari
+    </button>
+  </form>
+
+  <!-- ===============================
+                TABLE
+  =============================== -->
+  <div class="overflow-x-auto shadow rounded-xl border border-gray-200">
+
+    <table class="w-full text-left border-collapse text-sm">
+      <thead class="bg-blue-50 text-gray-700">
+        <tr>
+          <th class="px-4 py-3 border">No</th>
+          <th class="px-4 py-3 border">Photo</th>
+          <th class="px-4 py-3 border">Timestamp</th>
+          <th class="px-4 py-3 border">Model</th>
+          <th class="px-4 py-3 border">Surname</th>
+          <th class="px-4 py-3 border">Given Names</th>
+          <th class="px-4 py-3 border">Passport Number</th>
+          <th class="px-4 py-3 border text-center">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="bg-white text-gray-800">
+        {% for row in records %}
+        <tr class="hover:bg-blue-50 transition border-b border-gray-200">
+
+          <!-- No -->
+          <td class="px-4 py-3">
+            {{ (page - 1) * per_page + loop.index }}
+          </td>
+
+          <!-- Photo -->
+          <td class="px-4 py-3 text-center">
+            {% if row.photo_path %}
+              <img src="/{{ row.photo_path }}" class="h-12 w-auto rounded shadow mx-auto">
+            {% else %}
+              <span class="text-gray-400 text-xs">No Photo</span>
+            {% endif %}
+          </td>
+
+          <td class="px-4 py-3">{{ row.timestamp }}</td>
+          <td class="px-4 py-3 font-medium">{{ row.model }}</td>
+          <td class="px-4 py-3">{{ row.surname }}</td>
+          <td class="px-4 py-3">{{ row.given_names }}</td>
+          <td class="px-4 py-3">{{ row.passport_number }}</td>
+
+          <!-- Action -->
+          <td class="px-4 py-3">
+            <div class="flex justify-center gap-2">
+
+              <a href="/record/{{ row.id }}"
+                class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-xs shadow">
+                View
+              </a>
+
+              <a href="/record/{{ row.id }}/edit"
+                class="px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md text-xs shadow">
+                Edit
+              </a>
+
+              <form action="/delete_record/{{ row.id }}" method="POST"
+                    onsubmit="return confirm('Yakin ingin menghapus record ini?');">
+                <button class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-md text-xs shadow">
+                    Delete
+                </button>
+              </form>
+
+            </div>
+          </td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+
+  <!-- ===============================
+              PAGINATION
+  =============================== -->
+  <div class="flex justify-center mt-8">
+    <nav class="inline-flex space-x-1">
+
+      {% set q = request.args.get('q') %}
+
+      {% if page > 1 %}
+        <a href="{{ url_for('records', page=page-1, q=q) }}"
+           class="px-3 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded">
+           Prev
+        </a>
+      {% endif %}
+
+      {% for p in range(1, total_pages + 1) %}
+        <a href="{{ url_for('records', page=p, q=q) }}"
+           class="px-3 py-2 rounded
+           {% if p == page %}
+              bg-blue-600 text-white
+           {% else %}
+              bg-gray-200 text-gray-700 hover:bg-gray-300
+           {% endif %}">
+           {{ p }}
+        </a>
+      {% endfor %}
+
+      {% if page < total_pages %}
+        <a href="{{ url_for('records', page=page+1, q=q) }}"
+           class="px-3 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded">
+           Next
+        </a>
+      {% endif %}
+
+    </nav>
+  </div>
+
+  <!-- ===============================
+             EXPORT BUTTONS
+  =============================== -->
+  <div class="flex gap-3 mt-8">
+
+    <a href="/export/json"
+       class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded">
+       Export JSON
+    </a>
+
+    <a href="/export/excel"
+       class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded">
+       Export Excel
+    </a>
+
+    <a href="/export/pdf"
+       class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded">
+       Export PDF
+    </a>
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-white">
+<head>
+    <meta charset="UTF-8" />
+    <title>Paspor OCR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: white;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-white flex flex-col">
+
+<!-- ====================== NAVBAR ====================== -->
+<nav class="bg-blue-800 border-b border-blue-700 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+
+            <!-- LOGO -->
+            <a href="{{ url_for('dashboard_page') }}" class="flex items-center gap-2">
+                <img 
+                    src="{{ url_for('static', filename='images/passport_ocr_logo.png') }}" 
+                    class="h-8 w-auto object-contain"
+                >
+                <span class="text-white text-xl font-semibold">
+                    Paspor OCR
+                </span>
+            </a>
+
+            <!-- MOBILE BUTTON -->
+            <button id="mobile-btn" class="md:hidden text-white text-xl">
+                ☰
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="hidden md:hidden bg-blue-800 px-4 pb-3 space-y-2">
+        <a href="{{ url_for('dashboard_page') }}" class="block py-2 text-gray-300 hover:text-white">🏠 Dashboard</a>
+        <a href="{{ url_for('handle_upload') }}" class="block py-2 text-gray-300 hover:text-white">📤 Upload Paspor</a>
+        <a href="{{ url_for('records') }}" class="block py-2 text-gray-300 hover:text-white">📚 Records</a>
+        <a href="{{ url_for('metrics_page') }}" class="block py-2 text-gray-300 hover:text-white">📊 Metrics Evaluation</a>
+        <a href="{{ url_for('dataset_evaluation_page') }}" class="block py-2 text-gray-300 hover:text-white">🧠 Dataset Evaluation</a>
+        <a href="{{ url_for('logout') }}" class="block py-2 text-red-300 hover:text-red-200">🚪 Logout</a>
+    </div>
+</nav>
+
+<!-- ====================== LAYOUT ====================== -->
+<div class="flex flex-grow w-full">
+
+    <!-- ====================== SIDEBAR ====================== -->
+    <aside class="hidden md:flex flex-col w-64 bg-blue-900 text-gray-100">
+
+        <a href="{{ url_for('dashboard_page') }}" class="px-6 py-3 hover:bg-blue-800">🏠 Dashboard</a>
+        <a href="{{ url_for('handle_upload') }}" class="px-6 py-3 hover:bg-blue-800">📤 Upload Paspor</a>
+        <a href="{{ url_for('records') }}" class="px-6 py-3 hover:bg-blue-800">📚 Records</a>
+        <a href="{{ url_for('metrics_page') }}" class="px-6 py-3 hover:bg-blue-800">📊 Metrics Evaluation</a>
+        <a href="{{ url_for('dataset_evaluation_page') }}" class="px-6 py-3 hover:bg-blue-800">🧠 Dataset Evaluation</a>
+
+        <a href="{{ url_for('logout') }}"
+   class="px-6 py-3 hover:bg-blue-800 text-red-400 hover:text-red-300 flex items-center gap-2">
+    🚪 Logout
+</a>
+
+    </aside>
+
+    <!-- ====================== MAIN ====================== -->
+    <main class="flex-grow p-6 bg-white overflow-y-auto">
+        {% block content %}{% endblock %}
+    </main>
+
+</div>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="bg-blue-800 text-center text-sm text-white py-4">
+    © 2025 Paspor OCR – YOLOv12 + Faster R-CNN
+</footer>
+
+<!-- ====================== SCRIPT ====================== -->
+<script>
+    const mobileBtn = document.getElementById("mobile-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    mobileBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+</script>
+
+</body>
+</html>

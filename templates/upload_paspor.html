@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="max-w-4xl mx-auto pt-10 pb-32 px-6">
+
+  <div class="bg-white rounded-2xl shadow border p-8">
+
+    <!-- ===============================
+                TITLE
+    =============================== -->
+    <h1 class="text-2xl font-bold mb-4 text-gray-900">
+      Upload Dokumen Paspor
+    </h1>
+
+    <p class="text-sm text-gray-600 mb-6">
+      Pilih gambar paspor (JPG/PNG) lalu tentukan model yang ingin digunakan:
+      <span class="font-semibold text-blue-600">YOLOv12</span>,
+      <span class="font-semibold text-green-600">Faster R-CNN</span>, atau
+      <span class="font-semibold text-amber-600">Compare (Keduanya)</span>.
+    </p>
+
+    <!-- ===============================
+              FLASH MESSAGE
+    =============================== -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="space-y-2 mb-6">
+          {% for category, msg in messages %}
+            <div class="px-4 py-2 rounded-md text-sm
+              {% if category == 'error' %}
+                bg-red-100 text-red-700
+              {% elif category == 'success' %}
+                bg-green-100 text-green-700
+              {% else %}
+                bg-blue-100 text-blue-700
+              {% endif %}">
+              {{ msg }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- ===============================
+                 FORM
+    =============================== -->
+    <form method="POST" enctype="multipart/form-data" class="space-y-6">
+
+      <!-- FILE INPUT -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          File Gambar Paspor
+        </label>
+
+        <input type="file" name="image" accept="image/*" required
+          class="block w-full text-sm text-gray-800
+                 file:mr-4 file:py-2 file:px-4
+                 file:rounded-md file:border-0
+                 file:font-semibold
+                 file:bg-blue-50 file:text-blue-700
+                 hover:file:bg-blue-100">
+      </div>
+
+      <!-- MODE SELECTION -->
+      <div>
+      <label class="block text-sm font-medium text-gray-700 mb-3">
+        Pilih Mode Inference
+      </label>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+
+        <!-- YOLOv12 -->
+        <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer
+                      border border-blue-200 bg-blue-50
+                      hover:bg-blue-100 transition shadow-sm">
+          <input type="radio" name="mode" value="yolo" checked
+                class="accent-blue-600">
+          <span class="font-semibold text-blue-800">
+            YOLOv12 saja
+          </span>
+        </label>
+
+        <!-- Faster R-CNN -->
+        <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer
+                      border border-amber-200 bg-amber-50
+                      hover:bg-amber-100 transition shadow-sm">
+          <input type="radio" name="mode" value="frcnn"
+                class="accent-amber-500">
+          <span class="font-semibold text-amber-800">
+            Faster R-CNN saja
+          </span>
+        </label>
+
+        <!-- Compare -->
+        <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer
+                      border border-slate-300 bg-slate-50
+                      hover:bg-slate-100 transition shadow-sm">
+          <input type="radio" name="mode" value="both"
+                class="accent-indigo-600">
+          <span class="font-semibold text-slate-800">
+            Compare (YOLOv12 + Faster R-CNN)
+          </span>
+        </label>
+
+      </div>
+    </div>
+
+
+      <!-- SUBMIT -->
+      <div class="flex justify-end pt-2">
+        <button type="submit"
+          class="px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700
+                 text-white text-sm font-semibold shadow">
+          Jalankan OCR
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

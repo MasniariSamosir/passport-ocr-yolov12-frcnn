@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-3xl mx-auto py-10">
+
+  <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 mb-8">
+    Detail Hasil OCR Paspor
+  </h2>
+
+  <div class="bg-gray-800/10 dark:bg-gray-800 p-6 rounded-xl shadow-md space-y-4">
+
+    {% if data.photo_path %}
+      <div class="mb-6 flex justify-center">
+          <img src="/{{ data.photo_path }}" 
+              class="w-64 rounded-lg shadow-lg border" 
+              alt="Passport Photo">
+      </div>
+      {% endif %}
+
+      
+
+    {% set labels = {
+      "model": "Model",
+      "mrz": "MRZ",
+      "surname": "Surname",
+      "given_names": "Given Names",
+      "passport_number": "Passport Number",
+      "nationality": "Nationality",
+      "place_of_birth": "Place of Birth",
+      "sex": "Sex",
+      "date_of_birth": "Date of Birth",
+      "date_of_issue": "Date of Issue",
+      "date_of_expiry": "Date of Expiry"
+    } %}
+
+    {% for key, label in labels.items() %}
+      <div>
+        <div class="text-sm font-semibold text-gray-600 dark:text-gray-300">
+          {{ label }}
+        </div>
+        <div class="border px-3 py-2 bg-white dark:bg-gray-900 rounded text-gray-800 dark:text-gray-200">
+          {{ data[key] if data[key] else "-" }}
+        </div>
+      </div>
+    {% endfor %}
+
+    <!-- JSON Section -->
+    <div class="mt-6">
+      <div class="flex justify-between items-center">
+        <div class="text-sm font-semibold text-gray-600 dark:text-gray-300">Raw JSON</div>
+        <a href="/download_json/{{ data.id }}"
+           class="text-blue-500 hover:underline text-sm">
+          Download JSON
+        </a>
+      </div>
+
+      <textarea class="w-full h-48 border rounded bg-gray-50 dark:bg-gray-900 text-sm text-gray-700 dark:text-gray-300 mt-2"
+                readonly>{{ data.raw_json }}</textarea>
+    </div>
+
+  </div>
+
+  <div class="mt-6 flex justify-center gap-4">
+
+  <a href="/records"
+     class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded shadow">
+     ← Kembali ke Daftar
+  </a>
+
+  <a href="/record/{{ data.id }}/edit"
+     class="px-5 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded shadow">
+     Edit
+  </a>
+
+</div>
+</div>
+
+{% endblock %}

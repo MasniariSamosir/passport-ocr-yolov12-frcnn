@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4">
+
+    <!-- ================= HEADER ================= -->
+    <div class="mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">
+            📊 Evaluasi Keseluruhan Dataset (31 Paspor)
+        </h1>
+        <p class="text-gray-600 mt-1">
+            Evaluasi model <strong>YOLOv12</strong> dan <strong>Faster R-CNN</strong>
+            berdasarkan CAR, CER, WAR, WER, Precision, Recall, Accuracy, F1-score, Waktu Inferensi dan FPS.
+        </p>
+    </div>
+
+    <!-- ================= GRID ================= -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- ================= YOLO ================= -->
+        <div class="card p-6 border-l-4 border-blue-600">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">
+                YOLOv12
+            </h2>
+
+            <table class="w-full text-sm">
+                <tbody class="divide-y">
+                    <tr><td class="py-2 font-medium">Jumlah Dataset</td><td>{{ yolo.Total_Data }}</td></tr>
+                    <tr><td class="py-2 font-medium">CAR</td><td>{{ yolo.CAR }} %</td></tr>
+                    <tr><td class="py-2 font-medium">CER</td><td>{{ yolo.CER }} %</td></tr>
+                    <tr><td class="py-2 font-medium">WAR</td><td>{{ yolo.WAR }} %</td></tr>
+                    <tr><td class="py-2 font-medium">WER</td><td>{{ yolo.WER }}</td></tr>
+                    <tr><td class="py-2 font-medium">Precision</td><td>{{ yolo.Precision }} %</td></tr>
+                    <tr><td class="py-2 font-medium">Recall</td><td>{{ yolo.Recall }} %</td></tr>
+                    <tr>
+                    <td class="py-2 font-medium">Accuracy</td>
+                    <td>{{ yolo.Accuracy }} %</td>
+                </tr>
+
+                <tr>
+                    <td class="py-2 font-medium">F1-score</td>
+                    <td>{{ yolo["F1-score"] }} %</td>
+                </tr>
+
+                <tr>
+                    <td class="py-2 font-medium">Rata-rata Waktu Inferensi</td>
+                    <td>{{ yolo.Avg_Time | default(0) }} detik</td>
+                </tr>
+
+                <tr>
+                    <td class="py-2 font-medium">Rata-rata FPS</td>
+                    <td>{{ yolo.Avg_FPS | default(0) }}</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ================= FRCNN ================= -->
+        <div class="card p-6 border-l-4 border-green-600">
+            <h2 class="text-xl font-semibold text-green-700 mb-4">
+                Faster R-CNN
+            </h2>
+
+            <table class="w-full text-sm">
+                <tbody class="divide-y">
+                    <tr><td class="py-2 font-medium">Jumlah Dataset</td><td>{{ frcnn.Total_Data }}</td></tr>
+                    <tr><td class="py-2 font-medium">CAR</td><td>{{ frcnn.CAR }} %</td></tr>
+                    <tr><td class="py-2 font-medium">CER</td><td>{{ frcnn.CER }} %</td></tr>
+                    <tr><td class="py-2 font-medium">WAR</td><td>{{ frcnn.WAR }} %</td></tr>
+                    <tr><td class="py-2 font-medium">WER</td><td>{{ frcnn.WER }}</td></tr>
+                    <tr><td class="py-2 font-medium">Precision</td><td>{{ frcnn.Precision }} %</td></tr>
+                    <tr><td class="py-2 font-medium">Recall</td><td>{{ frcnn.Recall }} %</td></tr>
+                    <tr>
+                    <td class="py-2 font-medium">Accuracy</td>
+                    <td>{{ frcnn.Accuracy }} %</td>
+                </tr>
+
+                <tr>
+                    <td class="py-2 font-medium">F1-score</td>
+                    <td>{{ frcnn["F1-score"] }} %</td>
+                </tr>
+
+                <tr>
+                    <td class="py-2 font-medium">Rata-rata Waktu Inferensi</td>
+                    <td>{{ frcnn.Avg_Time | default(0) }} detik</td>
+                </tr>
+
+                <tr>
+                    <td class="py-2 font-medium">Rata-rata FPS</td>
+                    <td>{{ frcnn.Avg_FPS | default(0) }}</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
