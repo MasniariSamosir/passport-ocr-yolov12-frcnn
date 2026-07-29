@@ -1,0 +1,61 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ==========================
+# Virtual Environment
+# ==========================
+venv/
+venv312/
+.venv/
+
+# ==========================
+# IDE Settings
+# ==========================
+.vscode/
+.idea/
+
+# ==========================
+# Logs
+# ==========================
+logs/
+*.log
+
+# ==========================
+# Training Results
+# ==========================
+runs/
+
+# ==========================
+# Model Checkpoints
+# ==========================
+checkpoints_frcnn/
+*.pt
+*.pth
+
+# ==========================
+# Temporary Output
+# ==========================
+frcnn_output1/
+output_json/
+static/uploads/
+
+# ==========================
+# Export Files
+# ==========================
+export_records.xlsx
+export_all_records.json
+
+# ==========================
+# Operating System Files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Environment Variables
+# ==========================
+.env
