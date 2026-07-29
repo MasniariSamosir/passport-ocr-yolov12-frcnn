@@ -1,6 +1,6 @@
 # 🛂 PAS-OCR DL
 
-## Deep Learning-Based Passport Information Extraction Using Faster R-CNN, YOLOv12, and Optical Character Recognition (OCR)
+## Implementation of Faster Region-Based Convolutional Neural Network (Faster R-CNN) and YOLOv12 for Automatic Text Extraction from Passport Documents Using Optical Character Recognition (OCR)
 
 PAS-OCR DL is a web-based Optical Character Recognition (OCR) system developed for automatic passport information extraction using Deep Learning and Computer Vision technologies.
 
