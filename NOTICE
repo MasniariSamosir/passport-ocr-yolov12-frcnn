@@ -1,0 +1,25 @@
+NOTICE
+
+Passport OCR using YOLOv12 and Faster R-CNN
+
+Copyright (c) 2026 Masniari Samosir
+
+This repository is published solely for academic review,
+portfolio demonstration, and research dissemination.
+
+The source code, software architecture, algorithms,
+documentation, and related materials are the intellectual
+property of Masniari Samosir.
+
+No permission is granted to copy, modify, redistribute,
+reproduce, or reuse any part of this repository
+without prior written authorization from the author.
+
+The trained model weights and datasets are not included
+in this repository.
+
+For licensing, research collaboration, or permission requests,
+please contact:
+
+Masniari Samosir
+Email: samosirmasniari@gmail.com
